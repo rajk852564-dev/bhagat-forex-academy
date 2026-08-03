@@ -48,7 +48,35 @@
 📞 Join on WhatsApp
 </button>
 </a>
+<div style="background:#2b2b2b;padding:20px;border-radius:10px;margin:20px auto;max-width:350px;">
+<h2 style="color:#ff4444;">⏳ Offer Ends In</h2>
 
+<h1 id="timer" style="color:#00ff88;">23:59:59</h1>
+
+<script>
+var countDownDate = new Date().getTime() + (24*60*60*1000);
+
+var x = setInterval(function() {
+
+var now = new Date().getTime();
+
+var distance = countDownDate - now;
+
+var hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+var minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+var seconds = Math.floor((distance % (1000*60))/1000);
+
+document.getElementById("timer").innerHTML =
+hours + ":" + minutes + ":" + seconds;
+
+if (distance < 0) {
+clearInterval(x);
+document.getElementById("timer").innerHTML = "Offer Expired";
+}
+},1000);
+</script>
+
+</div>
 </section>
 </body>
 </html>
