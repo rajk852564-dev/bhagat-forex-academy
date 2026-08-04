@@ -165,4 +165,19 @@ Register Now
 
 </section>
 </body>
+<script>
+function sendToWhatsApp() {
+  var name = document.querySelector('input[type="text"]').value;
+  var mobile = document.querySelector('input[type="tel"]').value;
+  var email = document.querySelector('input[type="email"]').value;
+
+  var msg =
+  "New Student Registration%0A%0A" +
+  "Name: " + name + "%0A" +
+  "Mobile: " + mobile + "%0A" +
+  "Email: " + email;
+
+  window.open("https://wa.me/916005220853?text=" + msg, "_blank");
+}
+</script>
 </html>
