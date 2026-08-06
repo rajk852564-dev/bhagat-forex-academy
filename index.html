@@ -238,23 +238,24 @@ Register Now
 </section>
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyKDucnsMYkNHp1OQrt7NeF-MJmUUqFuN_pcmnMUo3jWNkTTH73uANd48bQedVjJZQL/exec";
-
 async function sendToSheet() {
-  const name = document.querySelector('input[type="text"]').value;
-  const mobile = document.querySelector('input[type="tel"]').value;
-  const email = document.querySelector('input[type="email"]').value;
-
+  const name = document.getElementById("name").value;
+  const mobile = document.getElementById("mobile").value;
+  const email = document.getElementById("email").value;
+  const utr = document.getElementById("utr").value;
   await fetch(SCRIPT_URL, {
     method: "POST",
     body: JSON.stringify({
       name: name,
       mobile: mobile,
-      email: email
-    })
-  });
+      email: email,
+      utr: utr
+})
+});
 
-  alert("Registration Successful!");
+alert("Registration Successful!");
 }
+    
 </script>
 
 </body>
