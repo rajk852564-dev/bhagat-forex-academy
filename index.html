@@ -138,49 +138,52 @@ allowfullscreen>
 <p>✅ Daily Market Analysis</p>
 <p>✅ WhatsApp Support</p>
 <p>✅ Beginner to Advanced</p>
-
 </div>
 <div style="background:#2b2b2b;padding:20px;border-radius:12px;max-width:500px;margin:20px auto;">
+
 <h2 style="color:#FFD700;text-align:center;">📝 Student Registration</h2>
 
-<input type="text" placeholder="Full Name" style="width:100%;padding:12px;margin:8px 0;border:none;border-radius:8px;">
+<input id="name" type="text" placeholder="Full Name"
+style="width:100%;padding:12px;margin:8px 0;border:none;border-radius:8px;">
 
-<input type="tel" placeholder="Mobile Number" style="width:100%;padding:12px;margin:8px 0;border:none;border-radius:8px;">
+<input id="mobile" type="tel" placeholder="Mobile Number"
+style="width:100%;padding:12px;margin:8px 0;border:none;border-radius:8px;">
 
-<input type="email" placeholder="Email Address" style="width:100%;padding:12px;margin:8px 0;border:none;border-radius:8px;">
-<a href="https://forms.gle/jLx9wdub82iMwoNDA" target="_blank">
-<button style="width:100%;padding:14px;background:#00ff88;color:#000;border:none;border-radius:8px;font-size:18px;font-weight:bold;">
+<input id="email" type="email" placeholder="Email Address"
+style="width:100%;padding:12px;margin:8px 0;border:none;border-radius:8px;">
+
+<button onclick="sendToSheet()"
+style="width:100%;padding:14px;background:#00ff88;color:#000;border:none;border-radius:8px;font-size:18px;font-weight:bold;cursor:pointer;">
 Register Now
 </button>
-</a>
+
 </div>
 <h2 style="color:#00ff88;">📞 Contact Us</h2>
-
 <p>Email: support@bhagatforexacademy.com</p>
-<p>WhatsApp: +91 91600520853</p>
-
-<p style="color:#888;font-size:14px;margin-top:30px;">
+<p>WhatsApp: +91 91600520853</p> style="color:#888;font-size:14px;margin-top:30px;">
 © 2026 Bhagat Forex Academy. All Rights Reserved.
 </p>
-
 </section>
 <script>
-function sendToWhatsApp() {
-  var name = document.querySelector('input[type="text"]').value;
-  var mobile = document.querySelector('input[type="tel"]').value;
-  var email = document.querySelector('input[type="email"]').value;
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyKDucnsMYkNHp1OQrt7NeF-MJmUUqFuN_pcmnMUo3jWNkTTH73uANd48bQedVjJZQL/exec";
 
-  var msg =
-    "🎓 New Student Registration%0A%0A" +
-    "👤 Name: " + name + "%0A" +
-    "📱 Mobile: " + mobile + "%0A" +
-    "📧 Email: " + email;
+async function sendToSheet() {
+  const name = document.querySelector('input[type="text"]').value;
+  const mobile = document.querySelector('input[type="tel"]').value;
+  const email = document.querySelector('input[type="email"]').value;
 
-  window.open(
-    "https://wa.me/916005220853?text=" + msg,
-    "_blank"
-);
+  await fetch(SCRIPT_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      name: name,
+      mobile: mobile,
+      email: email
+    })
+  });
+
+  alert("Registration Successful!");
 }
 </script>
+
 </body>
 </html>
