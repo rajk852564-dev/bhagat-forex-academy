@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
@@ -8,132 +8,166 @@
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#08111f;
- color:#fff;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#08111f;
+  color:#fff;
 }
 header{
- background:#0d1728;
- padding:16px 18px;
- display:flex;
- justify-content:space-between;
- align-items:center;
- position:sticky;
- top:0;
- z-index:10;
+  background:#0d1728;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
-.logo{font-size:18px;font-weight:bold}
+.logo{
+  font-size:18px;
+  font-weight:bold;
+}
 .whatsapp{
- background:#16c76b;
- color:#fff;
- padding:10px 15px;
- border-radius:20px;
- text-decoration:none;
- font-size:13px;
+  background:#16c76b;
+  color:#fff;
+  padding:10px 15px;
+  border-radius:20px;
+  text-decoration:none;
+  font-size:14px;
 }
 .container{
- max-width:900px;
- margin:auto;
- padding:22px 14px;
+  max-width:900px;
+  margin:auto;
+  padding:20px;
 }
 .hero{
- padding:20px 0;
+  padding:35px 10px;
 }
 .hero h1{
- font-size:32px;
- margin:5px 0 10px;
+  font-size:38px;
+  line-height:1.15;
+  margin:10px 0;
 }
-.hero h1 span{color:#f5c542}
-.hero p{color:#aeb8c7;line-height:1.6}
-.course-card,.lesson{
- background:#111e33;
- border:1px solid #1e304b;
- border-radius:14px;
- margin:12px 0;
- overflow:hidden;
+.gold{color:#f0c75e}
+.hero p{
+  color:#aeb8c9;
+  line-height:1.7;
 }
-.course-card{padding:18px}
+.badge{
+  color:#e5c45d;
+  font-size:12px;
+  letter-spacing:2px;
+}
+.course-card{
+  background:#121d32;
+  border:1px solid #26344b;
+  border-radius:16px;
+  padding:20px;
+  margin-top:20px;
+}
 .progress-box{
- background:#091526;
- padding:15px;
- border-radius:10px;
+  background:#0d1728;
+  padding:15px;
+  border-radius:12px;
+  margin:20px 0;
 }
 .progress{
- height:8px;
- background:#263750;
- border-radius:10px;
- overflow:hidden;
+  height:8px;
+  background:#26344b;
+  border-radius:10px;
+  overflow:hidden;
 }
 .progress-bar{
- height:100%;
- width:0%;
- background:#16c76b;
+  height:100%;
+  width:0%;
+  background:#f0c75e;
+  transition:.3s;
+}
+.lesson{
+  background:#121d32;
+  border:1px solid #26344b;
+  border-radius:15px;
+  margin:15px 0;
+  overflow:hidden;
 }
 .lesson-title{
- padding:17px;
- font-weight:bold;
- cursor:pointer;
- font-size:15px;
+  padding:18px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
 }
 .lesson-content{
- display:none;
- padding:0 16px 18px;
+  display:none;
+  padding:20px;
+  border-top:1px solid #26344b;
 }
-.lesson-content.active{display:block}
+.lesson-content.active{
+  display:block;
+}
 .lesson-content h3{
- color:#f5c542;
- margin-top:20px;
+  color:#f0c75e;
 }
-.lesson-content p{
- color:#d5dbe5;
- line-height:1.65;
+.lesson-content p,
+.lesson-content li{
+  color:#c2cad8;
+  line-height:1.7;
 }
 .visual{
- background:#091526;
- padding:18px;
- border-radius:10px;
- margin:15px 0;
- text-align:center;
+  background:#0b1423;
+  border:1px solid #34445e;
+  border-radius:12px;
+  padding:20px;
+  margin:15px 0;
+  text-align:center;
 }
+.candle{
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:10px;
+  height:120px;
+}
+.bar{
+  width:18px;
+  border-radius:3px;
+  position:relative;
+}
+.green{background:#19b86a}
+.red{background:#e4483b}
+.b1{height:60px}
+.b2{height:90px}
+.b3{height:45px}
+.b4{height:105px}
 .step{
- background:#0b1729;
- border-left:3px solid #f5c542;
- padding:10px;
- margin:7px 0;
- color:#dce3ed;
- border-radius:4px;
-}
-.complete,.next{
- width:100%;
- padding:12px;
- margin-top:12px;
- border-radius:7px;
- font-weight:bold;
- cursor:pointer;
+  background:#0d1728;
+  border-left:3px solid #f0c75e;
+  padding:12px;
+  margin:10px 0;
+  border-radius:6px;
 }
 .complete{
- background:#16c76b;
- color:white;
- border:0;
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:8px;
+  background:#16c76b;
+  color:#fff;
+  font-weight:bold;
+  margin-top:15px;
 }
 .next{
- background:transparent;
- color:#fff;
- border:1px solid #f5c542;
-}
-.lesson img{
- width:100%;
- max-width:700px;
- border-radius:12px;
- margin:15px auto;
- display:block;
+  width:100%;
+  padding:13px;
+  border:1px solid #f0c75e;
+  border-radius:8px;
+  background:transparent;
+  color:#f0c75e;
+  margin-top:10px;
 }
 footer{
- text-align:center;
- color:#718096;
- padding:30px 10px;
- font-size:13px;
+  text-align:center;
+  color:#7f8ba0;
+  padding:40px 20px;
 }
 </style>
 </head>
@@ -141,39 +175,51 @@ footer{
 <body>
 
 <header>
-<div class="logo">↗ Bhagat Forex Academy</div>
-<a class="whatsapp" href="https://wa.me/" target="_blank">WhatsApp</a>
+<div class="logo">↗️ Bhagat Forex Academy</div>
+<a class="whatsapp"
+href="https://wa.me/9191600520853"
+target="_blank">WhatsApp</a>
 </header>
 
 <div class="container">
 
 <section class="hero">
-<div style="color:#f5c542;font-size:12px">FOREX • XAU/USD • SMART MONEY</div>
-<h1>Beginner Se <span>Profitable</span> Trader Tak</h1>
+<div class="badge">FOREX • XAU/USD • SMART MONEY</div>
+
+<h1>
+Beginner Se <span class="gold">Profitable Trader</span> Tak
+</h1>
+
 <p>
 Step-by-step practical Forex learning course.
 Candlestick, market structure, support-resistance,
-risk management aur trading psychology ko simple language mein seekhein.
+risk management aur trading psychology ko simple language
+mein seekhein.
 </p>
 </section>
 
 <div class="course-card">
 <h2>📚 Step-by-Step Lessons</h2>
-<p>Har lesson ko complete karein aur phir next lesson par jayein.</p>
+<p>
+Har lesson ko complete karein aur phir next lesson par jayein.
+</p>
 
 <div class="progress-box">
 <b>Course Progress</b>
 <p id="progressText">0 / 15 Lessons Completed</p>
+
 <div class="progress">
 <div class="progress-bar" id="progressBar"></div>
 </div>
 </div>
 </div>
 
+
 <!-- LESSON 1 -->
+
 <div class="lesson">
 <div class="lesson-title" onclick="openLesson(1)">
-🔰 Lesson 1 – Forex Trading Kya Hai?
+🔰 Lesson 1 — Forex Trading Kya Hai?
 </div>
 
 <div class="lesson-content" id="lesson1">
@@ -186,8 +232,8 @@ ek currency ko doosri currency ke against trade kiya jata hai.
 </p>
 
 <img src="file_000000001a3082118f8a26db143c073a.png"
-alt="Forex Trading Lesson 1">
-
+alt="Forex Trading Lesson 1"
+style="width:100%;max-width:700px;border-radius:12px;margin:15px 0;">
 <div class="visual">
 <h3>Currency Pair Example</h3>
 <p>EUR/USD → Euro vs US Dollar</p>
@@ -196,200 +242,461 @@ alt="Forex Trading Lesson 1">
 
 <h3>📝 Step-by-Step</h3>
 
-<div class="step"><b>Step 1:</b> Currency pair ko samjho.</div>
-<div class="step"><b>Step 2:</b> Base currency aur quote currency identify karo.</div>
-<div class="step"><b>Step 3:</b> Price upar ya neeche move hone ka analysis karo.</div>
-<div class="step"><b>Step 4:</b> Entry se pehle Stop Loss decide karo.</div>
+<div class="step">
+<b>Step 1:</b> Currency pair ko samjho.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Base currency aur quote currency identify karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Price upar ya neeche move hone ka analysis karo.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Entry se pehle Stop Loss decide karo.
+</div>
 
 <h3>💡 Important</h3>
-<p>Trading mein profit guaranteed nahi hota. Risk management sabse important hai.</p>
+<p>
+Trading mein profit guaranteed nahi hota. Risk management
+sabse important hai.
+</p>
 
-<button class="complete" onclick="completeLesson(1)">✅ Lesson 1 Complete</button>
-<button class="next" onclick="openLesson(2)">➡️ Next Lesson</button>
+<button class="complete" onclick="completeLesson(1)">
+✅ Lesson 1 Complete
+</button>
+
+<button class="next" onclick="openLesson(2)">
+➡️ Next Lesson
+</button>
 
 </div>
 </div>
+
 
 <!-- LESSON 2 -->
+
 <div class="lesson">
 <div class="lesson-title" onclick="openLesson(2)">
-🕯️ Lesson 2 – Candlestick Basics
+🕯️ Lesson 2 — Candlestick Basics
 </div>
 
 <div class="lesson-content" id="lesson2">
+
 <h3>📖 Candlestick Kya Hai?</h3>
+
 <p>
-Candlestick ek specific time period mein price ka Open, High,
-Low aur Close dikhata hai.
+Candlestick ek particular time period mein price movement
+ko show karta hai.
 </p>
 
 <div class="visual">
-<h3>🕯️ Candle Structure</h3>
-<p>Open → Start Price</p>
-<p>High → Highest Price</p>
-<p>Low → Lowest Price</p>
-<p>Close → Ending Price</p>
+<h3>📊 Candle Example</h3>
+
+<div class="candle">
+<div class="bar green b1"></div>
+<div class="bar red b2"></div>
+<div class="bar green b3"></div>
+<div class="bar red b4"></div>
+</div>
+
+<p>Green = Price Up | Red = Price Down</p>
 </div>
 
 <h3>📝 Step-by-Step</h3>
-<div class="step"><b>Step 1:</b> Candle ka body dekho.</div>
-<div class="step"><b>Step 2:</b> Upper aur lower wick dekho.</div>
-<div class="step"><b>Step 3:</b> Previous candles se comparison karo.</div>
-<div class="step"><b>Step 4:</b> Sirf ek candle par trade mat lo.</div>
 
-<h3>⚠️ Important</h3>
-<p>Candlestick confirmation ke saath market context bhi zaroor dekho.</p>
+<div class="step">
+<b>Step 1:</b> Candle ka Open dekho.
+</div>
 
-<button class="complete" onclick="completeLesson(2)">✅ Lesson 2 Complete</button>
-<button class="next" onclick="openLesson(3)">➡️ Next Lesson</button>
+<div class="step">
+<b>Step 2:</b> Candle ka Close dekho.
+</div>
+
+<div class="step">
+<b>Step 3:</b> High aur Low identify karo.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Candle body aur wick ko observe karo.
+</div>
+
+<h3>🎯 Practice</h3>
+<p>
+Chart par 20 candles dekho aur identify karo ki kaunsi candle
+bullish aur kaunsi bearish hai.
+</p>
+
+<button class="complete" onclick="completeLesson(2)">
+✅ Lesson 2 Complete
+</button>
+
+<button class="next" onclick="openLesson(3)">
+➡️ Next Lesson
+</button>
+
 </div>
 </div>
+
 
 <!-- LESSON 3 -->
+
 <div class="lesson">
 <div class="lesson-title" onclick="openLesson(3)">
-📈 Lesson 3 – Market Trend
+📈 Lesson 3 — Market Trend
 </div>
 
 <div class="lesson-content" id="lesson3">
-<h3>📖 Trend Kya Hai?</h3>
+
+<h3>📖 Trend Kya Hota Hai?</h3>
+
 <p>
-Market generally Uptrend, Downtrend ya Sideways condition mein move kar sakta hai.
+Market generally teen conditions mein ho sakta hai:
+Uptrend, Downtrend ya Range.
 </p>
 
-<div class="step"><b>Uptrend:</b> Higher High + Higher Low.</div>
-<div class="step"><b>Downtrend:</b> Lower High + Lower Low.</div>
-<div class="step"><b>Sideways:</b> Price range mein move karta hai.</div>
+<div class="visual">
+<h3>📈 Uptrend</h3>
+<p>Higher High → Higher Low → Higher High</p>
+</div>
 
-<h3>💡 Rule</h3>
-<p>Trend ke opposite trade lene se pehle strong confirmation zaroor dekho.</p>
+<h3>📝 Step-by-Step</h3>
 
-<button class="complete" onclick="completeLesson(3)">✅ Lesson 3 Complete</button>
-<button class="next" onclick="openLesson(4)">➡️ Next Lesson</button>
+<div class="step">
+<b>Step 1:</b> Chart ka higher timeframe dekho.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Previous High aur Low mark karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Higher High + Higher Low ho to Uptrend.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Lower High + Lower Low ho to Downtrend.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Clear direction na ho to Range ho sakta hai.
+</div>
+
+<button class="complete" onclick="completeLesson(3)">
+✅ Lesson 3 Complete
+</button>
+
+<button class="next" onclick="openLesson(4)">
+➡️ Next Lesson
+</button>
+
 </div>
 </div>
+
 
 <!-- LESSON 4 -->
+
 <div class="lesson">
 <div class="lesson-title" onclick="openLesson(4)">
-🎯 Lesson 4 – Support & Resistance
+🎯 Lesson 4 — Support & Resistance
 </div>
 
 <div class="lesson-content" id="lesson4">
+
 <h3>📖 Support & Resistance</h3>
+
 <p>
 Support wo area hai jahan price ko buying interest mil sakta hai.
 Resistance wo area hai jahan selling interest aa sakta hai.
 </p>
 
-<div class="step"><b>Step 1:</b> Previous highs aur lows mark karo.</div>
-<div class="step"><b>Step 2:</b> Important zones identify karo.</div>
-<div class="step"><b>Step 3:</b> Breakout ya rejection observe karo.</div>
-<div class="step"><b>Step 4:</b> Stop Loss define karo.</div>
+<div class="visual">
+<h3>Example</h3>
+<p>🔴 Resistance</p>
+<p>────────────</p>
+<p>⬆️ Price</p>
+<p>────────────</p>
+<p>🟢 Support</p>
+</div>
 
-<button class="complete" onclick="completeLesson(4)">✅ Lesson 4 Complete</button>
-<button class="next" onclick="openLesson(5)">➡️ Next Lesson</button>
+<h3>📝 Step-by-Step</h3>
+
+<div class="step">
+<b>Step 1:</b> Chart par previous reaction areas dekho.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Important highs mark karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Important lows mark karo.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Price reaction ko observe karo.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Sirf level touch hone par trade mat lo.
+Confirmation ka wait karo.
+</div>
+
+<button class="complete" onclick="completeLesson(4)">
+✅ Lesson 4 Complete
+</button>
+
+<button class="next" onclick="openLesson(5)">
+➡️ Next Lesson
+</button>
+
 </div>
 </div>
+
 
 <!-- LESSON 5 -->
+
 <div class="lesson">
 <div class="lesson-title" onclick="openLesson(5)">
-🛡️ Lesson 5 – Risk Management
+🛡️ Lesson 5 — Risk Management
 </div>
 
 <div class="lesson-content" id="lesson5">
-<img src="Lesson-5-Risk-Management.png"
-alt="Lesson 5 - Risk Management"
-style="width:100%;max-width:900px;border-radius:12px;margin:15px 0;">
+
 <h3>📖 Risk Management</h3>
+
 <p>
-Trading mein capital protection sabse important hai.
-Har trade mein limited risk rakhna seekho.
+Trading mein sabse important skill capital ko protect karna hai.
+Har trade mein limited risk rakhna zaroori hai.
 </p>
 
-<div class="step"><b>Step 1:</b> Pehle Stop Loss decide karo.</div>
-<div class="step"><b>Step 2:</b> Position size calculate karo.</div>
-<div class="step"><b>Step 3:</b> Overtrading avoid karo.</div>
-<div class="step"><b>Step 4:</b> Loss ke baad revenge trading mat karo.</div>
-
-<h3>⚠️ Important</h3>
-<p>High risk lene se account jaldi lose ho sakta hai.</p>
-
-<button class="complete" onclick="completeLesson(5)">✅ Lesson 5 Complete</button>
-<button class="next" onclick="openLesson(6)">➡️ Next Lesson</button>
-</div>
+<div class="visual">
+<h3>Example</h3>
+<p>Trading Capital = ₹10,000</p>
+<p>Maximum Risk = 1%</p>
+<p>Risk Amount = ₹100</p>
 </div>
 
+<h3>📝 Step-by-Step</h3>
+
+<div class="step">
+<b>Step 1:</b> Apna total trading capital calculate karo.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Per-trade risk percentage decide karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Stop Loss pehle decide karo.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Position size/risk ke according lot size choose karo.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Loss recover karne ke liye overtrading mat karo.
+</div>
+
+<h3>⚠️ Golden Rule</h3>
+<p>
+Pehle capital protection, uske baad profit.
+</p>
+
+<button class="complete" onclick="completeLesson(5)">
+✅ Lesson 5 Complete
+</button>
+
+</div>
+</div>
 <!-- LESSON 6 -->
+
 <div class="lesson">
 <div class="lesson-title" onclick="openLesson(6)">
-📊 Lesson 6 – Market Structure
+📊 Lesson 6 — Market Structure
 </div>
 
 <div class="lesson-content" id="lesson6">
+
 <h3>📖 Market Structure</h3>
+
 <p>
-Market structure price ke highs aur lows ko samajhne ka framework hai.
+Market structure se hume pata chalta hai ki market kis direction
+mein move kar raha hai.
 </p>
 
-<div class="step"><b>Step 1:</b> Swing High identify karo.</div>
-<div class="step"><b>Step 2:</b> Swing Low identify karo.</div>
-<div class="step"><b>Step 3:</b> Higher High / Lower Low dekho.</div>
-<div class="step"><b>Step 4:</b> Overall direction confirm karo.</div>
+<div class="visual">
+<h3>📈 Bullish Structure</h3>
+<p>Higher High → Higher Low → Higher High</p>
+<br>
+<h3>📉 Bearish Structure</h3>
+<p>Lower Low → Lower High → Lower Low</p>
+</div>
 
-<button class="complete" onclick="completeLesson(6)">✅ Lesson 6 Complete</button>
-<button class="next" onclick="openLesson(7)">➡️ Next Lesson</button>
+<h3>📝 Step-by-Step</h3>
+
+<div class="step">
+<b>Step 1:</b> Chart ko zoom out karke overall direction dekho.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Important swing highs mark karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Important swing lows mark karo.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Higher High aur Higher Low identify karo.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Lower High aur Lower Low identify karo.
+</div>
+
+<h3>🎯 Practice</h3>
+
+<p>
+Gold (XAU/USD) chart par 10 swing points mark karo aur
+dekho market bullish hai ya bearish.
+</p>
+
+<button class="complete" onclick="completeLesson(6)">
+✅ Lesson 6 Complete
+</button>
+
+<button class="next" onclick="openLesson(7)">
+➡️ Next Lesson
+</button>
+
 </div>
 </div>
+
 
 <!-- LESSON 7 -->
+
 <div class="lesson">
 <div class="lesson-title" onclick="openLesson(7)">
-💥 Lesson 7 – Break of Structure (BOS)
+💥 Lesson 7 — Break of Structure (BOS)
 </div>
 
 <div class="lesson-content" id="lesson7">
+
 <h3>📖 BOS Kya Hai?</h3>
+
 <p>
-Break of Structure tab kaha jata hai jab price important previous swing
-level ko decisively break karta hai.
+Break of Structure tab hota hai jab price previous important
+swing high ya swing low ko decisively break karta hai.
 </p>
 
-<div class="step"><b>Step 1:</b> Important swing identify karo.</div>
-<div class="step"><b>Step 2:</b> Break ko observe karo.</div>
-<div class="step"><b>Step 3:</b> Candle close ka wait karo.</div>
-<div class="step"><b>Step 4:</b> Higher timeframe context check karo.</div>
-<div class="step"><b>Step 5:</b> Sirf BOS dekhkar immediately trade mat lo.</div>
+<div class="visual">
+<h3>Example</h3>
+
+<p>Previous High</p>
+<p>──────────────</p>
+<p>⬆️ Price Breaks High</p>
+<p>━━━━━━━━━━━━━━</p>
+<p>Possible Bullish BOS</p>
+</div>
+
+<h3>📝 Step-by-Step</h3>
+
+<div class="step">
+<b>Step 1:</b> Previous important high/low identify karo.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Price ko us level ke paas observe karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Break genuine hai ya false breakout, confirm karo.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Higher timeframe context check karo.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Sirf BOS dekhkar immediately trade mat lo.
+Risk management follow karo.
+</div>
 
 <h3>⚠️ Important</h3>
-<p>Har breakout successful nahi hota. Confirmation aur risk management zaroori hai.</p>
 
-<button class="complete" onclick="completeLesson(7)">✅ Lesson 7 Complete</button>
-<button class="next" onclick="openLesson(8)">➡️ Next Lesson</button>
+<p>
+Har breakout successful nahi hota. Confirmation aur risk
+management zaroori hai.
+</p>
+
+<button class="complete" onclick="completeLesson(7)">
+✅ Lesson 7 Complete
+</button>
+
+<button class="next" onclick="openLesson(8)">
+➡️ Next Lesson
+</button>
+
 </div>
 </div>
+
 
 <!-- LESSON 8 -->
+
 <div class="lesson">
 <div class="lesson-title" onclick="openLesson(8)">
-🏦 Lesson 8 – Liquidity Basics
+🏦 Lesson 8 — Liquidity Basics
 </div>
 
 <div class="lesson-content" id="lesson8">
+
 <h3>📖 Liquidity Kya Hai?</h3>
+
 <p>
-Liquidity ka simple matlab market mein orders ki availability hai.
-Important highs aur lows ke aas-paas liquidity ho sakti hai.
+Trading mein liquidity ko simple language mein aise samjho:
+aise areas jahan bahut saare orders/stops concentrated ho
+sakte hain.
 </p>
 
-<div class="step"><b>Step 1:</b> Previous High/Low mark karo.</div>
-<div class="step"><b>Step 2:</b> Equal High/Low observe karo.</div>
-<div class="step"><b>Step 3:</b> Price reaction dekho.</div>
-<div class="step"><b>Step 4:</b> Confirmation ke bina entry mat lo.</div>
+<div class="visual">
+<h3>Liquidity Area</h3>
 
-<button class="complete
-" onclick="completeLesson(8)">✅ Lesson 8 Complete</button>
+<p>🔴 Previous High</p>
+<p>━━━━━━━━━━━━━━━━</p>
+<p>⬆️ Buy Stops / Orders</p>
+<p>━━━━━━━━━━━━━━━━</p>
+<p>Price Reaction</p>
+</div>
+
+<h3>📝 Step-by-Step</h3>
+
+<div class="step">
+<b>Step 1:</b> Previous highs aur lows identify karo.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Equal highs/equal lows observe karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Price ke reaction ko dekho.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Liquidity ko entry signal samajhne ki galti mat karo.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Structure + confirmation ke saath analysis karo.
+</div>
+
+<button class="complete" onclick="completeLesson(8)">
+✅ Lesson 8 Complete
+</button>
 
 <button class="next" onclick="openLesson(9)">
 ➡️ Next Lesson
@@ -398,29 +705,60 @@ Important highs aur lows ke aas-paas liquidity ho sakti hai.
 </div>
 </div>
 
+
 <!-- LESSON 9 -->
+
 <div class="lesson">
 <div class="lesson-title" onclick="openLesson(9)">
-🔄 Lesson 9 – Liquidity Sweep
+📦 Lesson 9 — Order Block Basics
 </div>
 
 <div class="lesson-content" id="lesson9">
-<h3>📖 Liquidity Sweep Kya Hai?</h3>
+
+<h3>📖 Order Block</h3>
 
 <p>
-Jab price kisi important high ya low ko temporarily break karke
-wapas reverse hota hai, ise liquidity sweep ke context mein dekha ja sakta hai.
+Order Block ko traders commonly ek important price area ke
+roop mein use karte hain jahan se strong move start hua ho.
 </p>
 
-<div class="step"><b>Step 1:</b> Previous High/Low mark karo.</div>
-<div class="step"><b>Step 2:</b> Equal High/Low observe karo.</div>
-<div class="step"><b>Step 3:</b> Sweep ke baad price reaction dekho.</div>
-<div class="step"><b>Step 4:</b> Confirmation ke bina entry mat lo.</div>
+<div class="visual">
+<h3>Order Block Example</h3>
 
-<h3>⚠️ Important</h3>
+<p>📦 Possible Order Block</p>
+<p>━━━━━━━━━━━━━━</p>
+<p>🟢 Strong Move ↑</p>
+<p>🟢 Strong Move ↑</p>
+<p>━━━━━━━━━━━━━━</p>
+</div>
+
+<h3>📝 Step-by-Step</h3>
+
+<div class="step">
+<b>Step 1:</b> Strong impulsive move identify karo.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Move se pehle ke relevant candle/area ko observe karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Higher timeframe context check karo.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Price ke area mein wapas aane ka wait karo.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Confirmation ke bina blind entry mat lo.
+</div>
+
+<h3>🎯 Practice</h3>
+
 <p>
-Har wick ya breakout liquidity sweep nahi hota.
-Market context aur risk management zaroor follow karo.
+XAU/USD ke chart par 3 strong moves identify karo aur unke
+origin areas ko mark karo.
 </p>
 
 <button class="complete" onclick="completeLesson(9)">
@@ -433,3 +771,449 @@ Market context aur risk management zaroor follow karo.
 
 </div>
 </div>
+
+
+<!-- LESSON 10 -->
+
+<div class="lesson">
+<div class="lesson-title" onclick="openLesson(10)">
+🧠 Lesson 10 — Trading Psychology
+</div>
+
+<div class="lesson-content" id="lesson10">
+
+<h3>📖 Trading Psychology</h3>
+
+<p>
+Trading mein strategy ke saath discipline bhi zaroori hai.
+Fear, greed aur revenge trading decision ko affect kar sakte hain.
+</p>
+
+<div class="visual">
+<h3>🧠 Trader Mindset</h3>
+
+<p>❌ Revenge Trading</p>
+<p>❌ Overtrading</p>
+<p>❌ FOMO</p>
+
+<br>
+
+<p>✅ Patience</p>
+<p>✅ Risk Management</p>
+<p>✅ Trading Plan</p>
+</div>
+
+<h3>📝 Step-by-Step</h3>
+
+<div class="step">
+<b>Step 1:</b> Trade lene se pehle apna setup identify karo.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Entry, Stop Loss aur Target plan karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Loss ke baad immediately revenge trade mat lo.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Daily trade limit/risk limit follow karo.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Har trade ka journal maintain karo.
+</div>
+
+<h3>🏆 Final Rule</h3>
+
+<p>
+<strong>
+Good trader woh nahi jo har trade mein profit kare.
+Good trader woh hai jo apne risk aur emotions ko control kare.
+</strong>
+</p>
+
+<button class="complete" onclick="completeLesson(10)">
+✅ Lesson 10 Complete
+</button>
+
+</div>
+</div>
+</div>
+<!-- LESSON 11 -->
+
+<div class="lesson">
+<div class="lesson-title" onclick="openLesson(11)">
+🕯️ Lesson 11 — Candlestick Patterns
+</div>
+
+<div class="lesson-content" id="lesson11">
+
+<h3>📖 Candlestick Kya Hai?</h3>
+
+<p>
+Candlestick price ke Open, High, Low aur Close ko show karta hai.
+Candlestick ko samajhna technical analysis ka basic part hai.
+</p>
+
+<div class="visual">
+<h3>🟢 Bullish Candle</h3>
+<p>Open → Low → High → Close</p>
+
+<h3>🔴 Bearish Candle</h3>
+<p>Open → High → Low → Close</p>
+</div>
+
+<h3>📝 Step-by-Step</h3>
+
+<div class="step">
+<b>Step 1:</b> Candle ka Open aur Close dekho.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Candle ki body identify karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Upper aur lower wick dekho.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Strong bullish aur bearish candles compare karo.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Candle ko market structure ke saath analyse karo.
+</div>
+
+<h3>🎯 Practice</h3>
+
+<p>
+XAU/USD chart par 20 candles observe karo aur bullish,
+bearish aur indecision candles ko identify karo.
+</p>
+
+<button class="complete" onclick="completeLesson(11)">
+✅ Lesson 11 Complete
+</button>
+
+<button class="next" onclick="openLesson(12)">
+➡️ Next Lesson
+</button>
+
+</div>
+</div>
+
+
+<!-- LESSON 12 -->
+
+<div class="lesson">
+<div class="lesson-title" onclick="openLesson(12)">
+📊 Lesson 12 — Support & Resistance
+</div>
+
+<div class="lesson-content" id="lesson12">
+
+<h3>📖 Support & Resistance</h3>
+
+<p>
+Support ek aisa price area ho sakta hai jahan buying interest
+increase ho, jabki resistance par selling interest increase ho
+sakta hai.
+</p>
+
+<div class="visual">
+<h3>Support</h3>
+<p>━━━━━━━━━━━━━━</p>
+<p>⬆️ Price Reaction</p>
+
+<br>
+
+<h3>Resistance</h3>
+<p>━━━━━━━━━━━━━━</p>
+<p>⬇️ Price Reaction</p>
+</div>
+
+<h3>📝 Step-by-Step</h3>
+
+<div class="step">
+<b>Step 1:</b> Chart par previous highs aur lows dekho.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Jahan price repeatedly react hua ho use mark karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Exact line ke bajay price zone ko consider karo.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Higher timeframe levels check karo.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Confirmation ke bina trade mat lo.
+</div>
+
+<h3>🎯 Practice</h3>
+
+<p>
+XAU/USD chart par 3 support aur 3 resistance zones mark karo.
+</p>
+
+<button class="complete" onclick="completeLesson(12)">
+✅ Lesson 12 Complete
+</button>
+
+<button class="next" onclick="openLesson(13)">
+➡️ Next Lesson
+</button>
+
+</div>
+</div>
+
+
+<!-- LESSON 13 -->
+
+<div class="lesson">
+<div class="lesson-title" onclick="openLesson(13)">
+📐 Lesson 13 — Trendlines
+</div>
+
+<div class="lesson-content" id="lesson13">
+
+<h3>📖 Trendline Kya Hai?</h3>
+
+<p>
+Trendline price movement ki direction ko visually samajhne mein
+help karti hai.
+</p>
+
+<div class="visual">
+<h3>📈 Uptrend</h3>
+<p>Low ↗ Low ↗ Low</p>
+
+<h3>📉 Downtrend</h3>
+<p>High ↘ High ↘ High</p>
+</div>
+
+<h3>📝 Step-by-Step</h3>
+
+<div class="step">
+<b>Step 1:</b> Market ka overall trend identify karo.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Important swing points mark karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Relevant points ko connect karo.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Trendline ko forcefully price par fit mat karo.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Trendline ko structure aur confirmation ke saath use karo.
+</div>
+
+<button class="complete" onclick="completeLesson(13)">
+✅ Lesson 13 Complete
+</button>
+
+<button class="next" onclick="openLesson(14)">
+➡️ Next Lesson
+</button>
+
+</div>
+</div>
+
+
+<!-- LESSON 14 -->
+
+<div class="lesson">
+<div class="lesson-title" onclick="openLesson(14)">
+🎯 Lesson 14 — Entry & Stop Loss
+</div>
+
+<div class="lesson-content" id="lesson14">
+
+<h3>📖 Entry Planning</h3>
+
+<p>
+Trade lene se pehle entry point, Stop Loss aur risk ko define
+karna important hai.
+</p>
+
+<div class="visual">
+<h3>Trade Plan</h3>
+<p>🎯 Entry</p>
+<p>🛑 Stop Loss</p>
+<p>💰 Target</p>
+</div>
+
+<h3>📝 Step-by-Step</h3>
+
+<div class="step">
+<b>Step 1:</b> Apna trading setup identify karo.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Entry ka reason clearly define karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Stop Loss logical invalidation level par plan karo.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Trade se pehle risk amount calculate karo.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Risk defined hone ke baad hi trade execute karo.
+</div>
+
+<h3>⚠️ Important</h3>
+
+<p>
+Stop Loss ko loss ke baad aur door move karke risk increase mat karo.
+</p>
+
+<button class="complete" onclick="completeLesson(14)">
+✅ Lesson 14 Complete
+</button>
+
+<button class="next" onclick="openLesson(15)">
+➡️ Next Lesson
+</button>
+
+</div>
+</div>
+
+
+<!-- LESSON 15 -->
+
+<div class="lesson">
+<div class="lesson-title" onclick="openLesson(15)">
+💰 Lesson 15 — Risk Management
+</div>
+
+<div class="lesson-content" id="lesson15">
+
+<h3>📖 Risk Management</h3>
+
+<p>
+Risk management trading ka sabse important part hai. Goal sirf
+profit banana nahi, balki capital ko protect karna bhi hai.
+</p>
+
+<div class="visual">
+<h3>🛡️ Risk Rules</h3>
+<p>❌ Overtrading</p>
+<p>❌ Revenge Trading</p>
+<p>❌ Excessive Risk</p>
+
+<br>
+
+<p>✅ Fixed Risk</p>
+<p>✅ Stop Loss</p>
+<p>✅ Trading Plan</p>
+</div>
+
+<h3>📝 Step-by-Step</h3>
+
+<div class="step">
+<b>Step 1:</b> Har trade ka maximum risk pehle decide karo.
+</div>
+
+<div class="step">
+<b>Step 2:</b> Stop Loss ke according position size calculate karo.
+</div>
+
+<div class="step">
+<b>Step 3:</b> Ek loss ke baad risk badhakar recovery mat karo.
+</div>
+
+<div class="step">
+<b>Step 4:</b> Daily loss limit maintain karo.
+</div>
+
+<div class="step">
+<b>Step 5:</b> Trading journal mein har trade record karo.
+</div>
+
+<h3>🏆 Golden Rule</h3>
+
+<p>
+<strong>
+Capital protection pehle, profit baad mein.
+Koi bhi strategy guaranteed profit nahi deti.
+</strong>
+</p>
+
+<button class="complete" onclick="completeLesson(15)">
+✅ Lesson 15 Complete
+</button>
+
+</div>
+</div>
+<footer>
+<p>© 2026 Bhagat Forex Academy</p>
+<p>Forex trading involves financial risk. Educational purpose only.</p>
+</footer>
+
+<script>
+
+let completed = [];
+
+function openLesson(num){
+
+  document.querySelectorAll(".lesson-content")
+  .forEach(function(el){
+    el.classList.remove("active");
+  });
+
+  const lesson = document.getElementById("lesson"+num);
+
+  if(lesson){
+    lesson.classList.add("active");
+    lesson.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  }
+}
+
+function completeLesson(num){
+
+  if(!completed.includes(num)){
+    completed.push(num);
+  }
+
+  updateProgress();
+
+  alert("✅ Lesson "+num+" Complete!");
+
+}
+
+function updateProgress(){
+
+ const total = 15;
+  const count = completed.length;
+
+  document.getElementById("progressText").innerText =
+    count+" / "+total+" Lessons Completed";
+
+  document.getElementById("progressBar").style.width =
+    ((count/total)*100)+"%";
+}
+
+</script>
+
+</body>
+</html>
