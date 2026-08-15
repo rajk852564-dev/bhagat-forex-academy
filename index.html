@@ -36,6 +36,39 @@ footer{text-align:center;color:#7f8ba0;padding:40px 20px}
 </header>
 
 <div class="container">
+<!-- FIREBASE LOGIN / SIGNUP -->
+<div id="authBox" class="course-card">
+  <h2>🔐 Student Login</h2>
+
+  <input id="authEmail"
+    type="email"
+    placeholder="Email address"
+    style="width:100%;padding:13px;margin:7px 0;border-radius:8px;border:1px solid #34445e;background:#0d1728;color:white;">
+
+  <input id="authPassword"
+    type="password"
+    placeholder="Password"
+    style="width:100%;padding:13px;margin:7px 0;border-radius:8px;border:1px solid #34445e;background:#0d1728;color:white;">
+
+  <button onclick="signUpUser()"
+    style="width:100%;padding:13px;margin-top:8px;background:#16c76b;color:white;border:0;border-radius:8px;font-weight:bold;">
+    📝 Create Account
+  </button>
+
+  <button onclick="loginUser()"
+    style="width:100%;padding:13px;margin-top:8px;background:#f0c75e;color:#08111f;border:0;border-radius:8px;font-weight:bold;">
+    🔑 Login
+  </button>
+
+  <button onclick="logoutUser()"
+    style="width:100%;padding:13px;margin-top:8px;background:#e4483b;color:white;border:0;border-radius:8px;font-weight:bold;">
+    🚪 Logout
+  </button>
+
+  <p id="authStatus" style="color:#aeb8c9;margin-top:12px;">
+    Login karke course access karein.
+  </p>
+</div>
 <!-- PAID COURSE HERO -->
 <section class="premium-course">
   <div class="premium-badge">🔐 PREMIUM FOREX COURSE</div>
@@ -556,6 +589,114 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
+</script>
+<script type="module">
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+const auth = getAuth();
+
+window.signUpUser = async function() {
+
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+
+  if (!email || !password) {
+    alert("Email aur password enter karo.");
+    return;
+  }
+
+  if (password.length < 6) {
+    alert("Password kam se kam 6 characters ka hona chahiye.");
+    return;
+  }
+
+  try {
+
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    alert("✅ Account successfully create ho gaya!");
+
+  } catch (error) {
+
+    alert("❌ " + error.message);
+
+  }
+};
+
+
+window.loginUser = async function() {
+
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+
+  if (!email || !password) {
+    alert("Email aur password enter karo.");
+    return;
+  }
+
+  try {
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    alert("✅ Login successful!");
+
+  } catch (error) {
+
+    alert("❌ Login failed: " + error.message);
+
+  }
+};
+
+
+window.logoutUser = async function() {
+
+  try {
+
+    await signOut(auth);
+
+    alert("✅ Logout ho gaya.");
+
+  } catch (error) {
+
+    alert("❌ Logout error: " + error.message);
+
+  }
+};
+
+
+onAuthStateChanged(auth, function(user) {
+
+  const status = document.getElementById("authStatus");
+
+  if (user) {
+
+    status.innerHTML =
+      "✅ Logged in: <b>" + user.email + "</b>";
+
+  } else {
+
+    status.innerHTML =
+      "🔒 Login karke course access karein.";
+
+  }
+
+});
+
 </script>
 <div style="text-align:center; padding:20px;">
   <a href="terms.html">Terms & Conditions</a> |
