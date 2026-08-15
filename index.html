@@ -381,6 +381,31 @@ alt="Lesson 8 - Liquidity Basics">
 
   const app = initializeApp(firebaseConfig);
   getAnalytics(app);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, async (user) => {
+
+  if (!user) {
+    lockCourse();
+    return;
+  }
+
+  try {
+    const userRef = doc(db, "course_access", user.email);
+    const userSnap = await getDoc(userRef);
+
+    if (userSnap.exists() && userSnap.data().Paid === true) {
+      unlockCourse();
+    } else {
+      lockCourse();
+    }
+
+  } catch (error) {
+    console.error("Course access error:", error);
+    lockCourse();
+  }
+});
 </script>
 <script>
 /* =========================
