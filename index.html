@@ -365,48 +365,8 @@ alt="Lesson 8 - Liquidity Basics">
 <footer><p>© 2026 Bhagat Forex Academy</p><p>Forex trading involves financial risk. Educational purpose only.</p></footer>
 </div>
 <!-- Firebase -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-analytics.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyBmPVvuacac1It7aCkGDj22M-LXExcaZeQ",
-    authDomain: "bhagat-forex-academy.firebaseapp.com",
-    projectId: "bhagat-forex-academy",
-    storageBucket: "bhagat-forex-academy.firebasestorage.app",
-    messagingSenderId: "136432902004",
-    appId: "1:136432902004:web:d59f7800884b8251079621",
-    measurementId: "G-JPRJFZXVY8"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  getAnalytics(app);
-const db = getFirestore(app);
-const auth = getAuth(app);
-
-onAuthStateChanged(auth, async (user) => {
-
-  if (!user) {
-    lockCourse();
-    return;
-  }
-
-  try {
-    const userRef = doc(db, "course_access", user.email);
-    const userSnap = await getDoc(userRef);
-
-    if (userSnap.exists() && userSnap.data().Paid === true) {
-      unlockCourse();
-    } else {
-      lockCourse();
-    }
-
-  } catch (error) {
-    console.error("Course access error:", error);
-    lockCourse();
-  }
-});
 </script>
+
 <script>
 /* =========================
    BHAGAT FOREX ACADEMY
