@@ -333,6 +333,213 @@ alt="Lesson 8 - Liquidity Basics">
 </div>
 
 <script>
+/* =========================
+   BHAGAT FOREX ACADEMY
+   ₹499 UPI COURSE LOCK
+   ========================= */
+
+const COURSE_PRICE = 499;
+const UPI_ID = "rajk757513-1@oksbi";
+
+let completed = [];
+
+/* Course payment box */
+function showPayment() {
+
+    const box = document.getElementById("paymentBox");
+
+    box.style.display = "block";
+
+    box.innerHTML = `
+        <h3>🔒 Course Locked</h3>
+
+        <p>
+            Course access ke liye ₹499 one-time payment karein.
+        </p>
+
+        <div style="
+            background:#0d1728;
+            padding:15px;
+            border-radius:10px;
+            margin:15px 0;
+            line-height:1.8;
+        ">
+            <b>Course:</b> Bhagat Forex Academy<br>
+            <b>Price:</b> ₹499<br>
+            <b>UPI ID:</b> ${UPI_ID}
+        </div>
+
+        <a
+          href="upi://pay?pa=${UPI_ID}&pn=Bhagat%20Forex%20Academy&am=499&cu=INR"
+          style="
+          display:block;
+          text-align:center;
+          background:#16c76b;
+          color:white;
+          padding:14px;
+          border-radius:8px;
+          text-decoration:none;
+          font-weight:bold;
+          margin-bottom:12px;">
+          💳 Pay ₹499 via UPI
+        </a>
+
+        <p style="font-size:13px;color:#aeb8c9;">
+          Payment complete hone ke baad neeche button dabayein.
+        </p>
+
+        <button
+          onclick="paymentDone()"
+          style="
+          width:100%;
+          padding:14px;
+          border:1px solid #f0c75e;
+          background:transparent;
+          color:#f0c75e;
+          border-radius:8px;
+          font-weight:bold;">
+          ✅ Payment Complete
+        </button>
+    `;
+}
+
+/* Payment confirmation */
+function paymentDone() {
+
+    const confirmPayment = confirm(
+        "Kya aapne ₹499 ka UPI payment successfully complete kar diya hai?"
+    );
+
+    if (!confirmPayment) {
+        return;
+    }
+
+    /*
+      NOTE:
+      GitHub Pages par payment ko securely verify
+      nahi kiya ja sakta. Real verification ke liye
+      Razorpay/backend webhook required hoga.
+    */
+
+    localStorage.setItem("bhagatCoursePaid", "true");
+
+    unlockCourse();
+
+    alert("✅ Course access unlocked!");
+}
+
+/* Course unlock */
+function unlockCourse() {
+
+    document.querySelectorAll(".lesson").forEach(function(lesson) {
+        lesson.style.display = "block";
+    });
+
+    const box = document.getElementById("paymentBox");
+
+    if (box) {
+        box.innerHTML = `
+            <h3>🔓 Course Unlocked</h3>
+            <p>Welcome to Bhagat Forex Academy!</p>
+            <p>🎓 Aapke 15 lessons available hain.</p>
+        `;
+    }
+}
+
+/* Course lock */
+function lockCourse() {
+
+    document.querySelectorAll(".lesson").forEach(function(lesson) {
+        lesson.style.display = "none";
+    });
+}
+
+/* Lesson open */
+function openLesson(num) {
+
+    if (localStorage.getItem("bhagatCoursePaid") !== "true") {
+
+        showPayment();
+
+        alert("🔒 Pehle ₹499 course payment complete karein.");
+
+        return;
+    }
+
+    document
+        .querySelectorAll(".lesson-content")
+        .forEach(function(el) {
+            el.classList.remove("active");
+        });
+
+    const lesson = document.getElementById("lesson" + num);
+
+    if (lesson) {
+
+        lesson.classList.add("active");
+
+        lesson.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+    }
+}
+
+/* Lesson complete */
+function completeLesson(num) {
+
+    if (localStorage.getItem("bhagatCoursePaid") !== "true") {
+
+        showPayment();
+
+        alert("🔒 Course locked hai. Pehle payment karein.");
+
+        return;
+    }
+
+    if (!completed.includes(num)) {
+        completed.push(num);
+    }
+
+    updateProgress();
+
+    alert("✅ Lesson " + num + " Complete!");
+}
+
+/* Progress */
+function updateProgress() {
+
+    const total = 15;
+    const count = completed.length;
+
+    const text = document.getElementById("progressText");
+    const bar = document.getElementById("progressBar");
+
+    if (text) {
+        text.innerText =
+            count + " / " + total + " Lessons Completed";
+    }
+
+    if (bar) {
+        bar.style.width =
+            ((count / total) * 100) + "%";
+    }
+}
+
+/* Page load */
+document.addEventListener("DOMContentLoaded", function() {
+
+    if (
+        localStorage.getItem("bhagatCoursePaid")
+        === "true"
+    ) {
+        unlockCourse();
+    } else {
+        lockCourse();
+    }
+
+});
+</script>
 let completed=[];
 function openLesson(num){
  document.querySelectorAll(".lesson-content").forEach(el=>el.classList.remove("active"));
