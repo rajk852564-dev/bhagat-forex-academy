@@ -540,22 +540,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 </script>
-let completed=[];
-function openLesson(num){
- document.querySelectorAll(".lesson-content").forEach(el=>el.classList.remove("active"));
- const lesson=document.getElementById("lesson"+num);
- if(lesson){lesson.classList.add("active");lesson.scrollIntoView({behavior:"smooth",block:"start"});}
-}
-function completeLesson(num){
- if(!completed.includes(num))completed.push(num);
- updateProgress();
- alert("✅ Lesson "+num+" Complete!");
-}
-function updateProgress(){
- const total=15,count=completed.length;
- document.getElementById("progressText").innerText=count+" / "+total+" Lessons Completed";
- document.getElementById("progressBar").style.width=((count/total)*100)+"%";
-}
-</script>
 </body>
 </html>
