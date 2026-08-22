@@ -629,20 +629,6 @@ function updateProgress() {
     }
 }
 
-/* Page load */
-document.addEventListener("DOMContentLoaded", function() {
-
-    if (
-        localStorage.getItem("bhagatCoursePaid")
-        === "true"
-    ) {
-        unlockCourse();
-    } else {
-        lockCourse();
-    }
-
-});
-</script>
 <script type="module">
 
 import {
