@@ -525,10 +525,10 @@ function paymentDone() {
       nahi kiya ja sakta. Real verification ke liye
       Razorpay/backend webhook required hoga.
     */
+localStorage.setItem("bhagatCoursePaid", "true");
 
-    localStorage.setItem("bhagatCoursePaid", "true");
-
-    unlockCourse();
+    
+   unlockCourse();
 
     alert("✅ Course access unlocked!");
 }
