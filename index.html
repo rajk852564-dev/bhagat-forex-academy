@@ -533,12 +533,14 @@ localStorage.setItem("bhagatCoursePaid", "true");
     alert("✅ Course access unlocked!");
 }
 
-/* Course unlock */
-function unlockCourse() {
+/* Course unlock *
+function lockCourse() {
+    window.courseUnlocked = false;
 
     document.querySelectorAll(".lesson").forEach(function(lesson) {
-        lesson.style.display = "block";
+        lesson.style.display = "none";
     });
+}
 
     const box = document.getElementById("paymentBox");
 
