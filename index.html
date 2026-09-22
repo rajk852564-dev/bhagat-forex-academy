@@ -364,88 +364,27 @@ alt="Lesson 8 - Liquidity Basics">
 <button class="complete" onclick="completeLesson(15)">✅ Lesson 15 Complete</button>
 </div></div>
 
-<footer><p>© 2026 Bhagat Forex Academy</p><p>Forex trading involves financial risk. Educational purpose only.</p></footer>
-</div>
-<!-- Firebase -->
-<!-- Firebase -->
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
-
-import {
-  getFirestore,
-  doc,
-  getDoc
-} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
-
-import {
-  getAuth,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
-
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBmPVvuacac1It7aCkGDj22M-LXExcaZeQ",
-  authDomain: "bhagat-forex-academy.firebaseapp.com",
-  projectId: "bhagat-forex-academy",
-  storageBucket: "bhagat-forex-academy.firebasestorage.app",
-  messagingSenderId: "136432902004",
-  appId: "1:136432902004:web:d59f7800884b8251079621",
-  measurementId: "G-JPRJFZXVY8"
-};
-
-const app = initializeApp(firebaseConfig);
-
-const db = getFirestore(app);
-const auth = getAuth(app);
-
-
-onAuthStateChanged(auth, async (user) => {
-
-  if (!user) {
-    lockCourse();
-    return;
-  }
-
-  try {
-
-    const userRef = doc(db, "course_access", user.email);
-
-    const userSnap = await getDoc(userRef);
-
-    if (userSnap.exists() && userSnap.data().Paid === true) {
-    alert("✅ Firebase Paid = TRUE मिला");
-    unlockCourse();
-} else {
-    alert("❌ Firebase document/Paid TRUE नहीं मिला");
-}
-
-  } catch (error) {
-
-    console.error("Course access error:", error);
-
-    lockCourse();
-
-  }
-
-});
-</script>
+<!-- =========================
+     BHAGAT FOREX ACADEMY
+     COURSE ACCESS SYSTEM
+     ========================= -->
 
 <script>
-/* =========================
-   BHAGAT FOREX ACADEMY
-   ₹499 UPI COURSE LOCK
-   ========================= */
+window.courseUnlocked = false;
 
-const COURSE_PRICE = 499;
 const UPI_ID = "rajk757513-1@oksbi";
-
 let completed = [];
 
-/* Course payment box */
+
+/* =========================
+   PAYMENT BOX
+   ========================= */
+
 function showPayment() {
-    const box =
- document.getElementById("paymentBox");
+
+    const box = document.getElementById("paymentBox");
+
+    if (!box) return;
 
     box.style.display = "block";
 
@@ -468,110 +407,84 @@ function showPayment() {
             <b>UPI ID:</b> ${UPI_ID}
         </div>
 
-        <a
-          href="upi://pay?pa=${UPI_ID}&pn=Bhagat%20Forex%20Academy&am=499&cu=INR"
-          style="
-          display:block;
-          text-align:center;
-          background:#16c76b;
-          color:white;
-          padding:14px;
-          border-radius:8px;
-          text-decoration:none;
-          font-weight:bold;
-          margin-bottom:12px;">
-          💳 Pay ₹499 via UPI
+        <a href="upi://pay?pa=${UPI_ID}&pn=Bhagat%20Forex%20Academy&am=499&cu=INR"
+           style="
+           display:block;
+           text-align:center;
+           background:#16c76b;
+           color:white;
+           padding:14px;
+           border-radius:8px;
+           text-decoration:none;
+           font-weight:bold;">
+           💳 Pay ₹499 via UPI
         </a>
 
         <p style="font-size:13px;color:#aeb8c9;">
-          Payment complete hone ke baad neeche button dabayein.
+            Payment ke baad admin verification ke through course access diya jayega.
         </p>
-
-        <button
-          onclick="paymentDone()"
-          style="
-          width:100%;
-          padding:14px;
-          border:1px solid #f0c75e;
-          background:transparent;
-          color:#f0c75e;
-          border-radius:8px;
-          font-weight:bold;">
-          ✅ Payment Complete
-        </button>
     `;
 }
 
-/* Payment confirmation */
-function paymentDone() {
 
-    const confirmPayment = confirm(
-        "Kya aapne ₹499 ka UPI payment successfully complete kar diya hai?"
-    );
+/* =========================
+   UNLOCK COURSE
+   ========================= */
 
-    if (!confirmPayment) {
-        return;
-    }
+function unlockCourse() {
 
-    /*
-      NOTE:
-      GitHub Pages par payment ko securely verify
-      nahi kiya ja sakta. Real verification ke liye
-      Razorpay/backend webhook required hoga.
-    */
-localStorage.setItem("bhagatCoursePaid", "true");
-
-    
-   unlockCourse();
-
-    alert("✅ Course access unlocked!");
-}
-
-/* Course unlock *
-function lockCourse() {
-    window.courseUnlocked = false; 
+    window.courseUnlocked = true;
 
     document.querySelectorAll(".lesson").forEach(function(lesson) {
-        lesson.style.display = "none";
+        lesson.style.display = "block";
     });
-}
 
     const box = document.getElementById("paymentBox");
 
     if (box) {
+        box.style.display = "block";
+
         box.innerHTML = `
             <h3>🔓 Course Unlocked</h3>
-            <p>Welcome to Bhagat Forex Academy!</p>
+            <p>Welcome to <b>Bhagat Forex Academy!</b></p>
             <p>🎓 Aapke 15 lessons available hain.</p>
         `;
     }
 }
 
-/* Course lock */
+
+/* =========================
+   LOCK COURSE
+   ========================= */
+
 function lockCourse() {
+
+    window.courseUnlocked = false;
 
     document.querySelectorAll(".lesson").forEach(function(lesson) {
         lesson.style.display = "none";
     });
 }
 
-/* Lesson open */
+
+/* =========================
+   OPEN LESSON
+   ========================= */
+
 function openLesson(num) {
 
     if (window.courseUnlocked !== true) {
 
         showPayment();
 
-        alert("🔒 Pehle ₹499 course payment complete karein.");
+        alert("🔒 Pehle course access unlock karein.");
 
         return;
     }
 
-    document
-        .querySelectorAll(".lesson-content")
-        .forEach(function(el) {
-            el.classList.remove("active");
-        });
+    document.querySelectorAll(".lesson-content").forEach(function(el) {
+        el.classList.remove("active");
+    });
 
     const lesson = document.getElementById("lesson" + num);
 
@@ -580,20 +493,24 @@ function openLesson(num) {
         lesson.classList.add("active");
 
         lesson.scrollIntoView({
-            behavior:"smooth",
-            block:"start"
+            behavior: "smooth",
+            block: "start"
         });
     }
 }
 
-/* Lesson complete */
+
+/* =========================
+   COMPLETE LESSON
+   ========================= */
+
 function completeLesson(num) {
 
-    if (localStorage.getItem("bhagatCoursePaid") !== "true") {
+    if (window.courseUnlocked !== true) {
 
         showPayment();
 
-        alert("🔒 Course locked hai. Pehle payment karein.");
+        alert("🔒 Course locked hai.");
 
         return;
     }
@@ -607,7 +524,11 @@ function completeLesson(num) {
     alert("✅ Lesson " + num + " Complete!");
 }
 
-/* Progress */
+
+/* =========================
+   PROGRESS
+   ========================= */
+
 function updateProgress() {
 
     const total = 15;
@@ -626,120 +547,239 @@ function updateProgress() {
             ((count / total) * 100) + "%";
     }
 }
+</script>
+
+
+<!-- =========================
+     FIREBASE LOGIN + ACCESS
+     ========================= -->
 
 <script type="module">
 
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+import {
+    getFirestore,
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
-const auth = getAuth();
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyBmPVvuacac1It7aCkGDj22M-LXExcaZeQ",
+
+    authDomain: "bhagat-forex-academy.firebaseapp.com",
+
+    projectId: "bhagat-forex-academy",
+
+    storageBucket: "bhagat-forex-academy.firebasestorage.app",
+
+    messagingSenderId: "136432902004",
+
+    appId: "1:136432902004:web:d59f7800884b8251079621",
+
+    measurementId: "G-JPRJFZXVY8"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const auth = getAuth(app);
+
+
+/* CREATE ACCOUNT */
 
 window.signUpUser = async function() {
 
-  const email = document.getElementById("authEmail").value.trim();
-  const password = document.getElementById("authPassword").value;
+    const email =
+        document.getElementById("authEmail").value.trim();
 
-  if (!email || !password) {
-    alert("Email aur password enter karo.");
-    return;
-  }
+    const password =
+        document.getElementById("authPassword").value;
 
-  if (password.length < 6) {
-    alert("Password kam se kam 6 characters ka hona chahiye.");
-    return;
-  }
+    if (!email || !password) {
+        alert("Email aur password enter karo.");
+        return;
+    }
 
-  try {
+    if (password.length < 6) {
+        alert("Password kam se kam 6 characters ka hona chahiye.");
+        return;
+    }
 
-    await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    try {
 
-    alert("✅ Account successfully create ho gaya!");
+        await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
-  } catch (error) {
+        alert("✅ Account successfully create ho gaya!");
 
-    alert("❌ " + error.message);
+    } catch (error) {
 
-  }
+        alert("❌ " + error.message);
+
+    }
 };
 
+
+/* LOGIN */
 
 window.loginUser = async function() {
 
-  const email = document.getElementById("authEmail").value.trim();
-  const password = document.getElementById("authPassword").value;
+    const email =
+        document.getElementById("authEmail").value.trim();
 
-  if (!email || !password) {
-    alert("Email aur password enter karo.");
-    return;
-  }
+    const password =
+        document.getElementById("authPassword").value;
 
-  try {
+    if (!email || !password) {
+        alert("Email aur password enter karo.");
+        return;
+    }
 
-    await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    try {
 
-    alert("✅ Login successful!");
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
-  } catch (error) {
+        alert("✅ Login successful!");
 
-    alert("❌ Login failed: " + error.message);
+    } catch (error) {
 
-  }
+        alert("❌ Login failed: " + error.message);
+
+    }
 };
 
+
+/* LOGOUT */
 
 window.logoutUser = async function() {
 
-  try {
+    try {
 
-    await signOut(auth);
+        await signOut(auth);
 
-    alert("✅ Logout ho gaya.");
+        alert("✅ Logout ho gaya.");
 
-  } catch (error) {
+    } catch (error) {
 
-    alert("❌ Logout error: " + error.message);
+        alert("❌ Logout error: " + error.message);
 
-  }
+    }
 };
 
 
-onAuthStateChanged(auth, function(user) {
+/* LOGIN + PAID CHECK */
 
-  const status = document.getElementById("authStatus");
+onAuthStateChanged(auth, async function(user) {
 
-  if (user) {
+    const status =
+        document.getElementById("authStatus");
 
-    status.innerHTML =
-      "✅ Logged in: <b>" + user.email + "</b>";
 
-  } else {
+    if (!user) {
 
-    status.innerHTML =
-      "🔒 Login karke course access karein.";
+        if (status) {
+            status.innerHTML =
+                "🔒 Login karke course access karein.";
+        }
 
-  }
+        lockCourse();
+
+        return;
+    }
+
+
+    if (status) {
+
+        status.innerHTML =
+            "✅ Logged in: <b>" +
+            user.email +
+            "</b>";
+    }
+
+
+    try {
+
+        const email =
+            user.email.toLowerCase();
+
+        const userRef =
+            doc(db, "course_access", email);
+
+        const userSnap =
+            await getDoc(userRef);
+
+
+        if (
+            userSnap.exists() &&
+            userSnap.data().Paid === true
+        ) {
+
+            unlockCourse();
+
+            console.log("✅ COURSE ACCESS GRANTED");
+
+        } else {
+
+            lockCourse();
+
+            console.log("🔒 COURSE ACCESS DENIED");
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Firestore access error:",
+            error
+        );
+
+        lockCourse();
+
+        alert(
+            "❌ Course access check failed."
+        );
+    }
 
 });
 
 </script>
+
+
+<!-- POLICY LINKS -->
+
 <div style="text-align:center; padding:20px;">
-  <a href="terms.html">Terms & Conditions</a> |
-  <a href="privacy.html">Privacy Policy</a> |
-  <a href="refund.html">Refund Policy</a> |
-  <a href="cancellation.html">Cancellation Policy</a>
+
+<a href="terms.html">Terms & Conditions</a> |
+
+<a href="privacy.html">Privacy Policy</a> |
+
+<a href="refund.html">Refund Policy</a> |
+
+<a href="cancellation.html">Cancellation Policy</a>
+
 </div>
+
 </body>
 </html>
