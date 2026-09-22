@@ -413,18 +413,12 @@ onAuthStateChanged(auth, async (user) => {
 
     const userSnap = await getDoc(userRef);
 
-    if (
-      userSnap.exists() &&
-      userSnap.data().Paid === true
-    ) {
-
-      unlockCourse();
-
-    } else {
-
-      lockCourse();
-
-    }
+    if (userSnap.exists() && userSnap.data().Paid === true) {
+    alert("✅ Firebase Paid = TRUE मिला");
+    unlockCourse();
+} else {
+    alert("❌ Firebase document/Paid TRUE नहीं मिला");
+}
 
   } catch (error) {
 
