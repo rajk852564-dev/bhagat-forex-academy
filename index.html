@@ -562,7 +562,7 @@ function lockCourse() {
 /* Lesson open */
 function openLesson(num) {
 
-    if (localStorage.getItem("bhagatCoursePaid") !== "true") {
+    if (window.courseUnlocked !== true) {
 
         showPayment();
 
